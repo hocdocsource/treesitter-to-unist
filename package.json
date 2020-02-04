@@ -1,5 +1,5 @@
 {
-  "version": "0.1.0",
+  "version": "0.1.1",
   "license": "MIT",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
@@ -42,5 +42,18 @@
     "chai": "^4.2.0",
     "tree-sitter": "^0.16.0",
     "unist-builder": "^2.0.2"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hocdocsource/treesitter-to-unist"
+  },
+  "bugs": "https://github.com/hocdocsource/treesitter-to-unist/issues",
+  "keywords": [
+    "ast",
+    "syntax",
+    "tree",
+    "unist",
+    "tree-sitter",
+    "treesitter"
+  ],
 }
