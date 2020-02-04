@@ -1,0 +1,46 @@
+{
+  "version": "0.1.0",
+  "license": "MIT",
+  "main": "dist/index.js",
+  "typings": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "start": "tsdx watch",
+    "build": "tsdx build",
+    "test": "tsdx test",
+    "lint": "tsdx lint",
+    "prepare": "tsdx build"
+  },
+  "peerDependencies": {},
+  "husky": {
+    "hooks": {
+      "pre-commit": "tsdx lint"
+    }
+  },
+  "prettier": {
+    "printWidth": 80,
+    "semi": true,
+    "singleQuote": true,
+    "trailingComma": "es5"
+  },
+  "name": "treesitter-to-unist",
+  "author": "Bernhard Berger",
+  "module": "dist/treesitter-to-unist.esm.js",
+  "devDependencies": {
+    "@types/jest": "^25.1.1",
+    "husky": "^4.2.1",
+    "tree-sitter-javascript": "^0.16.0",
+    "tsdx": "^0.12.3",
+    "tslib": "^1.10.0",
+    "typescript": "^3.7.5"
+  },
+  "dependencies": {
+    "@types/chai": "^4.2.8",
+    "@types/unist": "^2.0.3",
+    "chai": "^4.2.0",
+    "tree-sitter": "^0.16.0",
+    "unist-builder": "^2.0.2"
+  }
+}
