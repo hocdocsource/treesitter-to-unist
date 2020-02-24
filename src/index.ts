@@ -29,7 +29,10 @@ export default (tree: Parser.Tree): UnistNode => {
         end: pointToUninst(treesitterNode.endPosition, treesitterNode.endIndex),
       },
     };
-    return u(treesitterNode.type, props, children);
+
+    return children.length > 0
+      ? u(treesitterNode.type, props, children)
+      : u(treesitterNode.type, props);
   };
 
   return visitNode(tree.rootNode);

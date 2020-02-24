@@ -43,7 +43,6 @@ describe('Parse JavaScript', () => {
                     start: { line: 1, column: 7, offset: 6 },
                     end: { line: 1, column: 8, offset: 7 },
                   },
-                  children: [],
                 },
                 {
                   type: 'string',
@@ -52,7 +51,6 @@ describe('Parse JavaScript', () => {
                     start: { line: 1, column: 11, offset: 10 },
                     end: { line: 1, column: 18, offset: 17 },
                   },
-                  children: [],
                 },
               ],
             },
@@ -89,7 +87,6 @@ describe('Parse JavaScript', () => {
                         start: { line: 2, column: 1, offset: 19 },
                         end: { line: 2, column: 8, offset: 26 },
                       },
-                      children: [],
                     },
                     {
                       type: 'property_identifier',
@@ -98,7 +95,6 @@ describe('Parse JavaScript', () => {
                         start: { line: 2, column: 9, offset: 27 },
                         end: { line: 2, column: 12, offset: 30 },
                       },
-                      children: [],
                     },
                   ],
                 },
@@ -125,7 +121,6 @@ describe('Parse JavaScript', () => {
                             start: { line: 2, column: 13, offset: 31 },
                             end: { line: 2, column: 14, offset: 32 },
                           },
-                          children: [],
                         },
                         {
                           type: 'string',
@@ -134,7 +129,6 @@ describe('Parse JavaScript', () => {
                             start: { line: 2, column: 17, offset: 35 },
                             end: { line: 2, column: 26, offset: 44 },
                           },
-                          children: [],
                         },
                       ],
                     },
