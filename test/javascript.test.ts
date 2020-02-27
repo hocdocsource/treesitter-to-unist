@@ -10,11 +10,10 @@ describe('Parse JavaScript', () => {
     const tree = parser.parse(
       'const x = "Hello";\nconsole.log(x + " world!");'
     );
-    const result = toUninst(tree);
+    const result = toUninst(tree, { onlyNamedChildren: true });
 
     const expectedTree = {
       type: 'program',
-      value: 'const x = "Hello";\nconsole.log(x + " world!");',
       position: {
         start: { line: 1, column: 1, offset: 0 },
         end: { line: 2, column: 28, offset: 46 },
@@ -22,7 +21,6 @@ describe('Parse JavaScript', () => {
       children: [
         {
           type: 'lexical_declaration',
-          value: 'const x = "Hello";',
           position: {
             start: { line: 1, column: 1, offset: 0 },
             end: { line: 1, column: 19, offset: 18 },
@@ -30,7 +28,6 @@ describe('Parse JavaScript', () => {
           children: [
             {
               type: 'variable_declarator',
-              value: 'x = "Hello"',
               position: {
                 start: { line: 1, column: 7, offset: 6 },
                 end: { line: 1, column: 18, offset: 17 },
@@ -58,7 +55,6 @@ describe('Parse JavaScript', () => {
         },
         {
           type: 'expression_statement',
-          value: 'console.log(x + " world!");',
           position: {
             start: { line: 2, column: 1, offset: 19 },
             end: { line: 2, column: 28, offset: 46 },
@@ -66,7 +62,6 @@ describe('Parse JavaScript', () => {
           children: [
             {
               type: 'call_expression',
-              value: 'console.log(x + " world!")',
               position: {
                 start: { line: 2, column: 1, offset: 19 },
                 end: { line: 2, column: 27, offset: 45 },
@@ -74,7 +69,6 @@ describe('Parse JavaScript', () => {
               children: [
                 {
                   type: 'member_expression',
-                  value: 'console.log',
                   position: {
                     start: { line: 2, column: 1, offset: 19 },
                     end: { line: 2, column: 12, offset: 30 },
@@ -100,7 +94,6 @@ describe('Parse JavaScript', () => {
                 },
                 {
                   type: 'arguments',
-                  value: '(x + " world!")',
                   position: {
                     start: { line: 2, column: 12, offset: 30 },
                     end: { line: 2, column: 27, offset: 45 },
@@ -108,7 +101,6 @@ describe('Parse JavaScript', () => {
                   children: [
                     {
                       type: 'binary_expression',
-                      value: 'x + " world!"',
                       position: {
                         start: { line: 2, column: 13, offset: 31 },
                         end: { line: 2, column: 26, offset: 44 },

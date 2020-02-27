@@ -13,14 +13,18 @@ const pointToUninst = (
   };
 };
 
+export interface TreesitterOptions {
+  onlyNamedChildren?: boolean;
+}
+
 /** Convert a tree-sitter tree to a unist tree */
-export default (tree: Parser.Tree): UnistNode => {
+export default (tree: Parser.Tree, options: TreesitterOptions): UnistNode => {
   const visitNode = (treesitterNode: Parser.SyntaxNode): UnistNode => {
-    const children: UnistNode[] = treesitterNode.namedChildren.map(x =>
-      visitNode(x)
-    );
+    const treesitterChildren = options.onlyNamedChildren
+      ? treesitterNode.namedChildren
+      : treesitterNode.children;
+    const children: UnistNode[] = treesitterChildren.map(x => visitNode(x));
     const props = {
-      value: treesitterNode.text,
       position: {
         start: pointToUninst(
           treesitterNode.startPosition,
@@ -29,10 +33,9 @@ export default (tree: Parser.Tree): UnistNode => {
         end: pointToUninst(treesitterNode.endPosition, treesitterNode.endIndex),
       },
     };
-
     return children.length > 0
       ? u(treesitterNode.type, props, children)
-      : u(treesitterNode.type, props);
+      : u(treesitterNode.type, { ...props, value: treesitterNode.text });
   };
 
   return visitNode(tree.rootNode);

@@ -18,7 +18,7 @@ npm install treesitter-to-unist
 import treesitterToUninst from 'treesitter-to-unist';
 
 // First parse source to a TreeSitter tree
-const unistTree = treesitterToUninst(treesitterTree);
+const unistTree = treesitterToUninst(treesitterTree, { onlyNamedChildren: true });
 ```
 
 See [the Javascript parser test](test/javascript.test.ts) for a full example.
